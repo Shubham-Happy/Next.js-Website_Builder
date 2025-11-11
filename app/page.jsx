@@ -1,6 +1,7 @@
 import React from "react";
 import Canvas from "../components/Canvas";
 import Sidebar from "../components/Sidebar";
+import Preview from "../components/Preview";
 
 export default function Page() {
   return (
@@ -17,8 +18,14 @@ export default function Page() {
         <Sidebar />
       </aside>
 
-      <main style={{ flex: 1, padding: 16 }}>
-        <Canvas />
+      <main style={{ flex: 1, padding: 12, display: "flex", gap: 12 }}>
+        <div style={{ flex: 1 }}>
+          <Canvas />
+        </div>
+
+        <div style={{ width: 420 }}>
+          <Preview />
+        </div>
       </main>
     </div>
   );
