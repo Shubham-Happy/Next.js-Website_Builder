@@ -12,18 +12,34 @@ export function ElementRenderer({ element }: Props) {
     padding: style.padding || '12px',
     margin: style.margin,
     borderRadius: style.borderRadius,
+    border: style.border,
     color: style.color,
     fontSize: style.fontSize,
     fontWeight: style.fontWeight,
     textAlign: style.textAlign,
     width: style.width,
     height: style.height,
+    lineHeight: style.lineHeight,
+    fontFamily: style.fontFamily,
+    boxShadow: style.boxShadow,
+    opacity: style.opacity,
+    display: style.display,
+    flexDirection: style.flexDirection,
+    justifyContent: style.justifyContent,
+    alignItems: style.alignItems,
+    gap: style.gap,
+    flex: style.flex,
+    minHeight: style.minHeight,
+    maxWidth: style.maxWidth,
+    objectFit: style.objectFit,
+    background: style.background,
   };
 
   switch (type) {
     case 'container':
+    case 'section':
       return (
-        <div style={inlineStyle} className="border border-gray-200 min-h-[100px]">
+        <div style={inlineStyle} className="min-h-[100px]">
           {children?.map((child) => (
             <ElementRenderer key={child.id} element={child} />
           ))}
@@ -40,7 +56,7 @@ export function ElementRenderer({ element }: Props) {
     case 'text':
       return (
         <p style={inlineStyle}>
-          {content || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
+          {content || 'Lorem ipsum dolor sit amet.'}
         </p>
       );
 
@@ -48,7 +64,7 @@ export function ElementRenderer({ element }: Props) {
       return (
         <button
           style={inlineStyle}
-          className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          className="px-6 py-2 rounded transition"
         >
           {content || 'Click Me'}
         </button>
@@ -61,6 +77,25 @@ export function ElementRenderer({ element }: Props) {
           alt="Element"
           style={inlineStyle}
           className="max-w-full"
+        />
+      );
+
+    case 'input':
+      return (
+        <input
+          type="text"
+          placeholder={content || 'Enter text...'}
+          style={inlineStyle}
+          className="outline-none"
+        />
+      );
+
+    case 'textarea':
+      return (
+        <textarea
+          placeholder={content || 'Enter text...'}
+          style={inlineStyle}
+          className="outline-none resize-none"
         />
       );
 
